@@ -178,13 +178,14 @@
       .ticket-vsep::before,.ticket-vsep::after{width:12px !important;height:12px !important;}
 
       /* ── CARDS de conteúdo: coluna única, largura total ── */
+      .conteudo-section{padding:40px 12vw !important;}
       .conteudo-cards{grid-template-columns:1fr !important;gap:20px !important;}
       .cc{width:100% !important;max-width:100% !important;border-radius:16px !important;aspect-ratio:5/7 !important;}
       .cc-visual{flex:0 0 48% !important;height:unset !important;aspect-ratio:unset !important;}
-      .cc-corpo{padding:18px 18px 0 !important;}
-      .cc-titulo{font-size:1.1rem !important;margin-bottom:8px !important;line-height:1.25 !important;}
-      .cc-desc{font-size:.88rem !important;line-height:1.55 !important;}
-      .cc-badge-wrap{padding:10px 18px 18px !important;}
+      .cc-corpo{padding:16px 16px 0 !important;overflow:hidden !important;}
+      .cc-titulo{font-size:1rem !important;margin-bottom:6px !important;line-height:1.2 !important;}
+      .cc-desc{font-size:.82rem !important;line-height:1.5 !important;display:-webkit-box !important;-webkit-line-clamp:4 !important;-webkit-box-orient:vertical !important;overflow:hidden !important;}
+      .cc-badge-wrap{padding:8px 16px 14px !important;margin-top:auto;}
 
       /* PS caixas — fonte 16px no mobile */
       .ps-texto{font-size:23px !important;line-height:1.6 !important;}
@@ -295,7 +296,7 @@
 </section>
 
 <!-- O QUE VOCÊ VAI APRENDER -->
-<section style="background:var(--bege-claro);padding:60px 6vw;">
+<section class="conteudo-section" style="background:var(--bege-claro);padding:60px 6vw;">
   <div style="text-align:center;margin-bottom:64px;">
     <div class="s-pill roxo">✦ Conteúdo</div>
     <h2 class="conteudo-titulo">O que você vai aprender</h2>
@@ -389,10 +390,10 @@
         </svg>
       </div>
       <div class="cc-corpo">
-        <h3 class="cc-titulo">Lilith no Judaísmo e na Cabala</h3>
+        <h3 class="cc-titulo">Lilith e o Diabo nos textos históricos</h3>
         <p class="cc-desc">Da literatura apócrifa ao Zohar: como Lilith passou de espírito da tempestade para primeira esposa rebelde de Adão — e por que esse é um mito popular e não uma teologia.</p>
       </div>
-      <div class="cc-badge-wrap"><span class="cc-badge">✦ judaísmo · ocultismo</span></div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ cultura e ocultismo</span></div>
     </div>
 
   </div>
@@ -531,7 +532,7 @@
 </section>
 
 <!-- DEPOIMENTOS -->
-<section style="background:var(--bege-claro);padding:60px 6vw;">
+<section class="conteudo-section" style="background:var(--bege-claro);padding:60px 6vw;">
   <div style="display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:48px;">
     <div style="flex:1;height:1px;background:rgba(43,44,41,.12);"></div>
     <div class="s-pill roxo">✦ depoimentos</div>
