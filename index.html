@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lilith: Deusa ou Demônia? — Amanda Avalon</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=object-sans@400,700,900&display=swap" rel="stylesheet">
+  <style>
+    :root{--prata:#b4c0e0;--prata-claro:#dce2f0;--prata-escuro:#8ca0d2;--azul:#1a1428;--azul-medio:#3c3270;--roxo:#2d2050;--roxo-claro:#7864b4;--vinho:#645090;--vinho-claro:#4a2878;--bege:#f0eef8;--bege-claro:#f5f3fc;--preto:#0e0814;--fn-heavy:'Object Sans','DM Sans',sans-serif;--fn-serif:'DM Serif Display',Georgia,serif;}
+    html,body{max-width:100%;overflow-x:hidden;}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bege-claro);color:var(--preto);font-family:var(--fn-heavy);line-height:1.7;overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;transition:all .25s ease;white-space:nowrap;}
+    .btn-grad{background:linear-gradient(135deg,var(--roxo-claro),var(--vinho-claro));color:#fff;}
+    .btn-grad:hover{transform:translateY(-2px);filter:brightness(1.12);}
+    .barra{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:999;background:linear-gradient(180deg,#1a1428 0%,#2d2050 100%);border-radius:100px;padding:10px 14px;display:flex;align-items:center;justify-content:center;gap:20px;box-shadow:0 8px 40px rgba(0,0,0,.55);border:1px solid rgba(192,200,216,.1);white-space:nowrap;}
+    .hero{background:var(--preto);min-height:100vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:80px 6vw 100px;gap:44px;position:relative;overflow:hidden;}
+    .hero-grade{position:absolute;inset:0;pointer-events:none;opacity:.025;background-image:linear-gradient(var(--prata) 1px,transparent 1px),linear-gradient(90deg,var(--prata) 1px,transparent 1px);background-size:72px 72px;}
+    .glow1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(100,80,160,.55) 0%,transparent 70%);top:-120px;right:-80px;pointer-events:none;}
+    .glow2{position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(60,40,100,.4) 0%,transparent 70%);bottom:-40px;left:-80px;pointer-events:none;}
+    .hero-c{position:relative;z-index:2;}
+    .hero-h1{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2.2rem,3.2vw,3rem);letter-spacing:-.02em;line-height:1.12;color:var(--prata);margin-bottom:20px;-webkit-font-smoothing:antialiased;max-width:680px;}
+    .hero-h2{font-family:var(--fn-heavy);font-weight:300;font-size:clamp(1.05rem,1.45vw,1.3rem);color:rgba(192,200,216,.55);line-height:1.55;max-width:580px;}
+    .ticket{position:relative;z-index:2;display:flex;flex-direction:row;background:var(--bege);border-radius:14px;overflow:hidden;max-width:520px;box-shadow:0 12px 40px rgba(0,0,0,.45);transition:transform .25s ease,box-shadow .25s ease;cursor:pointer;}
+    .ticket:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.55);}
+    .ticket-img{width:130px;flex-shrink:0;overflow:hidden;position:relative;}
+    .ticket-img-bg{width:100%;height:100%;background:linear-gradient(160deg,#2d2050 0%,#1a1428 100%);display:flex;align-items:center;justify-content:center;font-family:var(--fn-serif);font-style:italic;font-size:.75rem;color:rgba(192,200,216,.35);text-align:center;padding:12px;line-height:1.5;min-height:160px;}
+    .ticket-vsep{width:1px;background:rgba(43,44,41,.1);position:relative;flex-shrink:0;}
+    .ticket-vsep::before,.ticket-vsep::after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:var(--preto);left:50%;transform:translateX(-50%);}
+    .ticket-vsep::before{top:-8px;}
+    .ticket-vsep::after{bottom:-8px;}
+    .ticket-body{padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;flex:1;min-width:0;}
+    .ticket-escola{font-family:var(--fn-heavy);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(43,44,41,.38);margin-bottom:4px;}
+    .ticket-nome{font-family:var(--fn-heavy);font-weight:900;font-size:.88rem;line-height:1.2;color:var(--preto);margin-bottom:10px;}
+    .ticket-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
+    .ticket-tag{font-family:var(--fn-heavy);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--roxo-claro);border:1px solid rgba(120,100,180,.3);padding:3px 8px;border-radius:100px;}
+    .ticket-preco{display:flex;flex-direction:column;gap:2px;padding-top:10px;border-top:1px dashed rgba(43,44,41,.12);}
+    .ticket-de{font-family:var(--fn-heavy);font-size:.6rem;color:rgba(43,44,41,.38);text-decoration:line-through;}
+    .ticket-val{font-family:var(--fn-heavy);font-weight:900;font-size:.92rem;color:var(--preto);}
+    .ticket-parc{font-family:var(--fn-heavy);font-size:.58rem;color:rgba(43,44,41,.4);}
+    .ticket-barcode{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 14px;border-left:1px solid rgba(43,44,41,.08);flex-shrink:0;gap:6px;}
+    .ticket-barcode svg{opacity:.25;}
+    .difs{background:var(--bege-claro);padding:50px 6vw 28px;text-align:center;}
+    .difs-titulo{font-family:var(--fn-serif);font-style:italic;font-weight:700;font-size:2.3rem;color:var(--preto);line-height:1.1;display:block;}
+    .difs-sub{font-family:var(--fn-heavy);font-weight:700;font-size:clamp(.9rem,3vw,2rem);color:var(--preto);display:block;margin-bottom:48px;letter-spacing:-.01em;line-height:1.1;}
+    .difs-cards{display:flex;gap:16px;flex-wrap:nowrap;justify-content:center;}
+    .dif{background:linear-gradient(135deg,var(--roxo-claro),var(--vinho-claro));color:#fff;font-family:var(--fn-heavy);font-size:1rem;font-weight:700;padding:20px 28px;border-radius:20px;flex:1;min-width:0;text-align:center;line-height:1.4;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .difs-divisor{margin-top:56px;display:flex;align-items:center;justify-content:center;}
+    .difs-linha{flex:1;height:1px;background:rgba(43,44,41,.1);}
+    .difs-estrela-centro{font-size:1.2rem;color:var(--roxo-claro);padding:0 16px;opacity:.5;}
+    .ps{background:var(--bege-claro);padding:36px 10vw 60px;}
+    .ps-duas-caixas{display:flex;flex-direction:row;align-items:stretch;gap:0;}
+    .ps-caixa-bloco{border-radius:20px;padding:36px 32px;flex:1;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;}
+    .ps-lado-esq{background:linear-gradient(135deg,#0e0814 0%,#1a1428 100%);}
+    .ps-lado-dir{background:linear-gradient(135deg,#1a1428 0%,#2d2050 100%);}
+    .ps-seta{width:48px;height:48px;flex-shrink:0;align-self:center;background:var(--bege-claro);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:rgba(43,44,41,.5);margin:0 -24px;position:relative;z-index:2;border:3px solid var(--bege-claro);box-shadow:0 0 0 2px rgba(43,44,41,.1);}
+    .ps-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:8px;width:fit-content;}
+    .ps-tag.problema{color:var(--prata);border:1px solid rgba(192,200,216,.3);}
+    .ps-tag.solucao{color:#7eca9c;border:1px solid rgba(126,202,156,.3);}
+    .ps-h{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(1rem,1.6vw,1.35rem);line-height:1.2;letter-spacing:-.01em;color:var(--prata);}
+    .ps-corpo{font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(192,200,216,.55);line-height:1.65;}
+    .ps-corpo .destaque{color:var(--prata-claro);}
+    .ps-corpo .destaque-verde{color:#7eca9c;}
+    .s-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:18px;}
+    .s-pill.roxo{color:var(--roxo-claro);border:1px solid rgba(120,100,180,.3);}
+    .s-pill.prata{color:var(--prata-escuro);border:1px solid rgba(192,200,216,.3);}
+    .conteudo-titulo{font-family:var(--fn-serif);font-style:italic;font-size:2.3rem;color:var(--preto);line-height:1.1;}
+    .cc{background:var(--preto);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;aspect-ratio:5/7;width:100%;}
+    .cc-visual{width:100%;flex:0 0 48%;position:relative;overflow:hidden;}
+    .cc-visual-bg{width:100%;height:100%;display:block;position:absolute;top:0;left:0;}
+    .cc-visual::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:24px;background:var(--preto);-webkit-mask:radial-gradient(circle at 12px 0,transparent 10px,#000 10px) repeat-x;mask:radial-gradient(circle at 12px 0,transparent 10px,#000 10px) repeat-x;-webkit-mask-size:24px 100%;mask-size:24px 100%;}
+    .cc-corpo{padding:16px 20px 0;flex:1;display:flex;flex-direction:column;overflow:hidden;}
+    .cc-titulo{font-family:var(--fn-heavy);font-weight:700;font-size:.92rem;color:var(--prata);margin-bottom:6px;line-height:1.2;}
+    .cc-desc{font-family:var(--fn-heavy);font-weight:400;font-size:.75rem;color:rgba(192,200,216,.5);line-height:1.5;flex:1;overflow:hidden;}
+    .cc-badge-wrap{padding:10px 20px 14px;}
+    .cc-badge{display:inline-block;background:rgba(90,58,142,.12);border:1px solid rgba(90,58,142,.25);color:var(--roxo-claro);font-family:var(--fn-heavy);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:100px;}
+    .mods{display:grid;grid-template-columns:1fr;gap:12px;}
+    .mod{background:var(--preto);border-radius:20px;overflow:hidden;display:flex;flex-direction:row;align-items:stretch;}
+    .mod-capa{width:120px;min-width:120px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+    .mod-circulo{width:56px;height:56px;border:1px solid rgba(192,200,216,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:rgba(192,200,216,.3);}
+    .mod-b{padding:20px 24px;flex:1;min-width:0;}
+    .mod-num{font-family:var(--fn-heavy);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--prata-escuro);margin-bottom:6px;}
+    .mod-h{font-family:var(--fn-heavy);font-weight:700;font-size:1rem;color:var(--prata);margin-bottom:6px;line-height:1.2;}
+    .mod-p{font-family:var(--fn-heavy);font-weight:400;font-size:.78rem;color:rgba(192,200,216,.48);line-height:1.45;margin-bottom:12px;}
+    .mod-badge{display:inline-block;background:rgba(90,58,142,.1);border:1px solid rgba(90,58,142,.22);color:var(--roxo-claro);font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
+    .pratica{background:linear-gradient(180deg,#1a1428 0%,#2d2050 100%);position:relative;overflow:hidden;}
+    .pratica-topo{padding:60px 6vw 40px;text-align:center;position:relative;z-index:2;}
+    .pratica-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;padding:6px 16px;border-radius:100px;color:var(--prata-escuro);border:1px solid rgba(192,200,216,.2);margin-bottom:16px;}
+    .pratica-titulo{font-family:var(--fn-serif);font-style:italic;font-size:2.3rem;color:var(--prata);line-height:1.1;}
+    .pratica-grade{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:2;border:1px solid rgba(192,200,216,.18);border-radius:16px;overflow:hidden;}
+    .pratica-item{background:rgba(192,200,216,.04);border:1px solid rgba(192,200,216,.18);padding:40px 44px;transition:background .3s ease;margin:-1px;}
+    .pratica-item:hover{background:rgba(192,200,216,.1);}
+    .pratica-num{font-family:var(--fn-heavy);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--prata-escuro);margin-bottom:16px;display:block;}
+    .pratica-item-titulo{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(1.2rem,2vw,1.7rem);color:var(--prata);line-height:1.15;letter-spacing:-.01em;margin-bottom:16px;}
+    .pratica-item-titulo span{color:var(--prata-claro);}
+    .pratica-item-desc{font-family:var(--fn-heavy);font-weight:400;font-size:15px;color:rgba(192,200,216,.55);line-height:1.65;}
+    .pq-tag-item{background:rgba(192,200,216,.07);border:1px solid rgba(192,200,216,.15);border-radius:14px;padding:14px 24px;font-family:var(--fn-heavy);font-weight:700;font-size:.88rem;color:var(--prata);}
+    #dep-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;cursor:grab;}
+    #dep-scroll::-webkit-scrollbar{display:none;}
+    .faq2-item{border-radius:12px;overflow:hidden;background:#fff;border:1px solid rgba(43,44,41,.07);margin-bottom:8px;}
+    .faq2-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 24px;background:transparent;border:none;cursor:pointer;font-family:var(--fn-heavy);font-weight:500;font-size:.95rem;color:var(--preto);text-align:left;gap:16px;}
+    .faq2-btn:hover{background:rgba(43,44,41,.02);}
+    .faq2-seta{font-size:1rem;color:rgba(43,44,41,.3);transition:transform .3s;flex-shrink:0;}
+    .faq2-btn.open .faq2-seta{transform:rotate(180deg);}
+    .faq2-resp{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;font-family:var(--fn-heavy);font-weight:400;font-size:.88rem;color:rgba(43,44,41,.6);line-height:1.7;padding:0 24px;}
+    .faq2-btn.open + .faq2-resp{max-height:300px;padding:0 24px 24px;}
+
+    /* ── PARA QUEM É ── */
+    .pq-frases{text-align:left;margin:0 0 48px;max-width:55%;}
+    .pq-menos{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(1.4rem,2.2vw,2rem);color:var(--prata);line-height:1.2;letter-spacing:-.02em;margin-bottom:10px;}
+    .pq-mais{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(1.4rem,2.2vw,2rem);color:var(--prata-claro);line-height:1.2;letter-spacing:-.02em;margin-bottom:14px;}
+    .pq-sub{font-family:var(--fn-heavy);font-weight:300;font-size:clamp(.95rem,1.2vw,1.1rem);color:rgba(192,200,216,.7);line-height:1.5;}
+    .pq-tags-wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start;margin-bottom:48px;max-width:80%;}
+    .pq-tag-item{background:rgba(192,200,216,.07);border:1px solid rgba(192,200,216,.2);border-radius:100px;padding:12px 22px;font-family:var(--fn-heavy);font-weight:600;font-size:.88rem;color:var(--prata);white-space:nowrap;}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;padding-top:80px;min-height:auto;}
+      .ps-duas-caixas{flex-direction:column;}
+      .ps-seta{margin:-24px auto;transform:rotate(90deg);}
+      .pratica-grade{grid-template-columns:1fr;}
+      .barra{width:calc(100% - 32px);}
+    }
+    @media(max-width:600px){
+      .hero-h1{font-size:clamp(1.8rem,6vw,2.4rem);}
+      .hero-h2{max-width:100%;font-size:1rem;}
+
+      /* ── TICKET: retangular horizontal, capa fixa à esquerda ── */
+      .ticket{
+        flex-direction:row !important;
+        width:100% !important;
+        max-width:100% !important;
+        height:140px !important;
+        min-height:140px !important;
+        overflow:hidden !important;
+        border-radius:14px !important;
+      }
+      .ticket-img{
+        width:110px !important;
+        min-width:110px !important;
+        max-width:110px !important;
+        height:100% !important;
+        flex-shrink:0 !important;
+        overflow:hidden !important;
+      }
+      .ticket-img img,
+      .ticket-img-bg{
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+        display:block !important;
+        min-height:140px !important;
+      }
+      .ticket-body{
+        padding:10px 12px !important;
+        flex:1 !important;
+        min-width:0 !important;
+        overflow:hidden !important;
+        display:flex !important;
+        flex-direction:column !important;
+        justify-content:space-between !important;
+      }
+      .ticket-escola{font-size:.44rem !important;}
+      .ticket-nome{font-size:.78rem !important;margin-bottom:6px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+      .ticket-tags{gap:3px !important;margin-bottom:6px !important;flex-wrap:wrap !important;}
+      .ticket-tag{font-size:.42rem !important;padding:2px 6px !important;}
+      .ticket-preco{padding-top:6px !important;}
+      .ticket-de{font-size:.54rem !important;}
+      .ticket-val{font-size:.78rem !important;}
+      .ticket-parc{font-size:.5rem !important;}
+      .ticket-barcode{padding:6px 8px !important;flex-shrink:0;}
+      .ticket-barcode svg{width:12px !important;}
+      .ticket-vsep::before,.ticket-vsep::after{width:12px !important;height:12px !important;}
+
+      /* ── CARDS de conteúdo: coluna única, largura total ── */
+      .conteudo-cards{grid-template-columns:1fr !important;gap:16px !important;}
+      .cc{width:100% !important;max-width:100% !important;border-radius:16px !important;aspect-ratio:5/7 !important;}
+      .cc-visual{flex:0 0 48% !important;height:unset !important;aspect-ratio:unset !important;}
+      .cc-corpo{padding:12px 14px 0 !important;}
+      .cc-titulo{font-size:.82rem !important;margin-bottom:4px !important;}
+      .cc-desc{font-size:.7rem !important;line-height:1.45 !important;}
+      .cc-badge-wrap{padding:8px 14px 12px !important;}
+
+      /* PS caixas — fonte 16px no mobile */
+      .ps-duas-caixas p[style]{font-size:16px !important;line-height:1.65 !important;}
+      .difs-cards{flex-direction:column;}
+      .pratica-grade{grid-template-columns:1fr 1fr;border-radius:12px;}
+      .pratica-item{padding:18px 14px;}
+      .pratica-item-desc{font-size:14px !important;}
+      .pratica-item-titulo{font-size:clamp(.95rem,3.2vw,1.325rem);}
+      #dep-scroll > div{min-width:75vw !important;max-width:78vw !important;}
+
+      /* Para quem é — mobile */
+      .pq-frases{max-width:100% !important;margin-bottom:32px !important;}
+      .pq-menos,.pq-mais{font-size:1.5rem !important;}
+      .pq-sub{font-size:1rem !important;}
+      .pq-tags-wrap{flex-direction:column !important;max-width:100% !important;gap:10px !important;}
+      .pq-tag-item{white-space:normal !important;border-radius:14px !important;padding:14px 18px !important;font-size:.92rem !important;}
+      .fac-grid{grid-template-columns:1fr !important;gap:20px !important;}
+      .fac-foto{width:100% !important;height:280px !important;}
+      .faq-layout{grid-template-columns:1fr !important;}
+      .faq-card-contato{width:100% !important;aspect-ratio:auto !important;min-height:180px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BARRA FLUTUANTE -->
+<div class="barra">
+  <a class="btn btn-grad" href="https://pay.hotmart.com/N105993404V" target="_blank">Garantir Ingresso</a>
+</div>
+
+<!-- HEADER -->
+<header style="background:var(--preto);padding:14px 6vw;display:flex;align-items:center;border-bottom:1px solid rgba(192,200,216,.06);">
+  <span style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(180,192,224,.28);">Escola Travessias · Amanda Avalon</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grade"></div>
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="hero-c">
+    <h1 class="hero-h1">Descubra a verdade por trás de um dos nomes mais enigmáticos do mundo.</h1>
+    <p class="hero-h2">Este curso navega 7.000 anos de história arqueológica, simbólica e espiritual de Lilith, rastreando sua evolução mítica e cultural e como isso afeta em você atualmente.</p>
+  </div>
+  <a class="ticket" href="https://pay.hotmart.com/N105993404V" target="_blank">
+    <div class="ticket-img">
+      <img src="capa.png" alt="Lilith: Deusa ou Demônia?" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="ticket-vsep"></div>
+    <div class="ticket-body">
+      <div>
+        <p class="ticket-escola">Escola Travessias · Amanda Avalon</p>
+        <p class="ticket-nome">Lilith: Deusa ou Demônia?</p>
+        <div class="ticket-tags">
+          <span class="ticket-tag">Videoaula</span>
+          <span class="ticket-tag">E-Book Incluso</span>
+          <span class="ticket-tag">Embasamento Histórico</span>
+          <span class="ticket-tag">Mitologia Comparada</span>
+        </div>
+      </div>
+      <div class="ticket-preco">
+        <span class="ticket-de">R$ 335,00</span>
+        <span class="ticket-val">R$ 144,00 à vista</span>
+        <span class="ticket-parc">ou 12x de R$ 14,49</span>
+      </div>
+    </div>
+    <div class="ticket-barcode">
+      <svg width="18" height="60" viewBox="0 0 18 60" fill="var(--preto)">
+        <rect x="0" y="0" width="2" height="60"/><rect x="4" y="0" width="1" height="60"/>
+        <rect x="7" y="0" width="3" height="60"/><rect x="12" y="0" width="1" height="60"/>
+        <rect x="15" y="0" width="2" height="60"/>
+      </svg>
+      <span style="font-family:var(--fn-heavy);font-weight:900;font-size:.5rem;letter-spacing:.1em;color:rgba(43,44,41,.5);text-transform:uppercase;writing-mode:vertical-rl;">INGRESSO</span>
+    </div>
+  </a>
+</section>
+
+<!-- DIFERENCIAIS -->
+<div class="difs">
+  <div style="max-width:900px;margin:0 auto;">
+    <p style="font-family:'Object Sans','DM Sans',sans-serif;font-weight:900;font-size:clamp(1.5rem,2.4vw,2.1rem);color:var(--preto);line-height:1.25;margin-bottom:48px;letter-spacing:-.02em;">Ela não é uma deusa apagada pelo patriarcado, mas isso não significa que ela não tem poder</p>
+    <div class="difs-cards">
+      <div class="dif">✦ método histórico/arqueológico ✦</div>
+      <div class="dif">✦ mitologia aplicada ✦</div>
+      <div class="dif">✦ acervo de 60+ referências bibliográficas ✦</div>
+    </div>
+    <div class="difs-divisor"><div class="difs-linha"></div><span class="difs-estrela-centro">✦</span><div class="difs-linha"></div></div>
+  </div>
+</div>
+
+<!-- PROBLEMA / SOLUÇÃO -->
+<section class="ps">
+  <div class="ps-duas-caixas">
+    <div class="ps-caixa-bloco ps-lado-esq">
+      <span class="ps-tag problema">✦ Vocês pedem</span>
+      <p style="font-family:'Object Sans','DM Sans',sans-serif;font-weight:700;font-size:20px;line-height:1.6;color:rgba(192,200,216,.65);">Nas redes sociais, <span style="color:var(--prata-claro);">a história de Lilith é recontada de formas diferentes e quase sempre sem fontes.</span> "Uma grande Deusa apagada pelo patriarcado", "no passado ela era Inanna", "a primeira deusa da lua negra". <span style="color:var(--prata-claro);">Nada disso é verdade.</span></p>
+    </div>
+    <div class="ps-seta">→</div>
+    <div class="ps-caixa-bloco ps-lado-dir">
+      <span class="ps-tag solucao">✦ A gente entrega</span>
+      <p style="font-family:'Object Sans','DM Sans',sans-serif;font-weight:700;font-size:20px;line-height:1.6;color:rgba(192,200,216,.65);">Em <span style="color:#7eca9c;">3h20min de videoaula + 63 páginas com referências científicas</span>, você vai percorrer 7.000 anos de registros históricos, arqueológicos e literários. <span style="color:#7eca9c;">Você sai com fundamento</span> e com liberdade para decidir o que Lilith significa para a sua prática.</p>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ VAI APRENDER -->
+<section style="background:var(--bege-claro);padding:60px 6vw;">
+  <div style="text-align:center;margin-bottom:64px;">
+    <div class="s-pill roxo">✦ Conteúdo</div>
+    <h2 class="conteudo-titulo">O que você vai aprender</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;">
+
+    <div class="cc">
+      <div class="cc-visual">
+        <svg class="cc-visual-bg" viewBox="0 0 400 267" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="g1" cx="40%" cy="60%" r="70%"><stop offset="0%" stop-color="#2d2050"/><stop offset="60%" stop-color="#1a1428"/><stop offset="100%" stop-color="#0e0814"/></radialGradient></defs>
+          <rect width="400" height="267" fill="url(#g1)"/>
+          <line x1="60" y1="134" x2="340" y2="134" stroke="rgba(192,200,216,.15)" stroke-width="1"/>
+          <circle cx="100" cy="134" r="5" stroke="rgba(192,200,216,.4)" stroke-width="1" fill="none"/>
+          <circle cx="175" cy="134" r="5" stroke="rgba(192,200,216,.4)" stroke-width="1" fill="none"/>
+          <circle cx="250" cy="134" r="5" stroke="rgba(192,200,216,.4)" stroke-width="1" fill="none"/>
+          <circle cx="325" cy="134" r="5" fill="rgba(192,200,216,.6)"/>
+          <line x1="100" y1="134" x2="100" y2="90" stroke="rgba(192,200,216,.18)" stroke-width="0.8"/>
+          <line x1="175" y1="134" x2="175" y2="100" stroke="rgba(192,200,216,.18)" stroke-width="0.8"/>
+          <line x1="250" y1="134" x2="250" y2="85" stroke="rgba(192,200,216,.18)" stroke-width="0.8"/>
+          <text x="100" y="82" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(192,200,216,.3)">Suméria</text>
+          <text x="175" y="92" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(192,200,216,.3)">Acádia</text>
+          <text x="250" y="77" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(192,200,216,.3)">Hebraico</text>
+          <circle cx="200" cy="200" r="42" stroke="rgba(90,58,142,.2)" stroke-width="1" fill="none"/>
+          <text x="200" y="22" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(192,200,216,.2)" letter-spacing="3">ORIGEM · HISTÓRIA · ARQUEOLOGIA</text>
+        </svg>
+      </div>
+      <div class="cc-corpo">
+        <h3 class="cc-titulo">A Origem Histórica de Lilith</h3>
+        <p class="cc-desc">O rastreamento de 7.000 anos de registros — da Mesopotâmia ao judaísmo medieval — mostrando quando e como o nome Lilith apareceu e com qual significado em cada contexto.</p>
+      </div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ fundamentos</span></div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-visual">
+        <svg class="cc-visual-bg" viewBox="0 0 400 267" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="g2" cx="60%" cy="40%" r="70%"><stop offset="0%" stop-color="#1a1428"/><stop offset="60%" stop-color="#2d2050"/><stop offset="100%" stop-color="#0e0814"/></radialGradient></defs>
+          <rect width="400" height="267" fill="url(#g2)"/>
+          <polygon points="200,36 240,96 300,96 255,132 272,192 200,154 128,192 145,132 100,96 160,96" stroke="rgba(192,200,216,.12)" stroke-width="1" fill="none"/>
+          <circle cx="200" cy="134" r="36" stroke="rgba(90,58,142,.2)" stroke-width="1" fill="none"/>
+          <circle cx="200" cy="134" r="18" stroke="rgba(90,58,142,.15)" stroke-width="1" fill="none"/>
+          <text x="200" y="22" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(192,200,216,.2)" letter-spacing="3">SUMÉRIA · ACÁDIA · PANTEÃO</text>
+        </svg>
+      </div>
+      <div class="cc-corpo">
+        <h3 class="cc-titulo">O Panteão Mesopotâmico e Seus Espíritos</h3>
+        <p class="cc-desc">Como funcionava a hierarquia espiritual suméria e acádia, quais eram os seres malignos dessa tradição e por que nenhum deles era cultuado como deusa.</p>
+      </div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ mitologia comparada</span></div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-visual">
+        <svg class="cc-visual-bg" viewBox="0 0 400 267" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="g3" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#3c3270"/><stop offset="55%" stop-color="#2d2050"/><stop offset="100%" stop-color="#0e0814"/></radialGradient></defs>
+          <rect width="400" height="267" fill="url(#g3)"/>
+          <line x1="200" y1="50" x2="200" y2="220" stroke="rgba(192,200,216,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+          <ellipse cx="200" cy="110" rx="60" ry="38" stroke="rgba(192,200,216,.12)" stroke-width="1" fill="none"/>
+          <ellipse cx="200" cy="110" rx="35" ry="22" stroke="rgba(92,26,26,.3)" stroke-width="1" fill="none"/>
+          <line x1="200" y1="155" x2="200" y2="205" stroke="rgba(60,40,100,.4)" stroke-width="1.5"/>
+          <polygon points="192,196 200,214 208,196" stroke="rgba(60,40,100,.4)" stroke-width="1" fill="rgba(92,26,26,.2)"/>
+          <path d="M170,88 L180,68 L190,83 L200,63 L210,83 L220,68 L230,88" stroke="rgba(192,200,216,.2)" stroke-width="1" fill="none"/>
+          <text x="200" y="22" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(192,200,216,.2)" letter-spacing="3">PATRIARCADO · DEMONIZAÇÃO</text>
+        </svg>
+      </div>
+      <div class="cc-corpo">
+        <h3 class="cc-titulo">A Demonização do Sagrado Feminino</h3>
+        <p class="cc-desc">Como o avanço do monoteísmo patriarcal transformou figuras femininas autônomas em demônios — e qual o papel político dessa transformação na construção da imagem de Lilith.</p>
+      </div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ sagrado feminino</span></div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-visual">
+        <svg class="cc-visual-bg" viewBox="0 0 400 267" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="g4" cx="50%" cy="60%" r="70%"><stop offset="0%" stop-color="#1a1428"/><stop offset="55%" stop-color="#3c3270"/><stop offset="100%" stop-color="#0e0814"/></radialGradient></defs>
+          <rect width="400" height="267" fill="url(#g4)"/>
+          <circle cx="200" cy="55" r="13" stroke="rgba(192,200,216,.2)" stroke-width="1" fill="none"/>
+          <circle cx="140" cy="105" r="9" stroke="rgba(192,200,216,.15)" stroke-width="1" fill="none"/>
+          <circle cx="260" cy="105" r="9" stroke="rgba(192,200,216,.15)" stroke-width="1" fill="none"/>
+          <circle cx="200" cy="155" r="11" stroke="rgba(92,26,26,.3)" stroke-width="1" fill="rgba(92,26,26,.05)"/>
+          <circle cx="140" cy="205" r="9" stroke="rgba(192,200,216,.12)" stroke-width="1" fill="none"/>
+          <circle cx="260" cy="205" r="9" stroke="rgba(192,200,216,.12)" stroke-width="1" fill="none"/>
+          <line x1="200" y1="68" x2="140" y2="96" stroke="rgba(192,200,216,.1)" stroke-width="0.8"/>
+          <line x1="200" y1="68" x2="260" y2="96" stroke="rgba(192,200,216,.1)" stroke-width="0.8"/>
+          <line x1="140" y1="114" x2="200" y2="144" stroke="rgba(192,200,216,.1)" stroke-width="0.8"/>
+          <line x1="260" y1="114" x2="200" y2="144" stroke="rgba(192,200,216,.1)" stroke-width="0.8"/>
+          <line x1="200" y1="166" x2="140" y2="196" stroke="rgba(192,200,216,.1)" stroke-width="0.8"/>
+          <line x1="200" y1="166" x2="260" y2="196" stroke="rgba(192,200,216,.1)" stroke-width="0.8"/>
+          <text x="200" y="22" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(192,200,216,.2)" letter-spacing="3">JUDAÍSMO · CABALA · ZOHAR</text>
+        </svg>
+      </div>
+      <div class="cc-corpo">
+        <h3 class="cc-titulo">Lilith no Judaísmo e na Cabala</h3>
+        <p class="cc-desc">Da literatura apócrifa ao Zohar: como Lilith passou de espírito da tempestade para primeira esposa rebelde de Adão — e por que esse é um mito popular e não uma teologia.</p>
+      </div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ judaísmo · ocultismo</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section style="background:var(--bege-claro);padding:60px 6vw;text-align:center;">
+  <div class="s-pill roxo" style="margin:0 auto 18px;">✦ Estrutura do curso</div>
+  <h2 class="conteudo-titulo" style="margin-bottom:64px;">Como você vai estudar</h2>
+  <div class="mods" style="text-align:left;">
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#2d2050 0%,#1a1428 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Módulo 01</p>
+        <h3 class="mod-h">Fundamentos: Mito, Sociedade e Espiritualidade</h3>
+        <p class="mod-p">A origem das mitologias, o papel do animismo, a transição para o monoteísmo, a psicologia junguiana dos princípios arquetípicos e a relação entre mito e psique. A base que Lilith precisa para fazer sentido.</p>
+        <span class="mod-badge">Fundamentos</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#1a1428 0%,#2d2050 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Módulo 02</p>
+        <h3 class="mod-h">A Mesopotâmia e as Primeiras Aparições</h3>
+        <p class="mod-p">O berço das civilizações e da escrita. O panteão mesopotâmico, a escrita cuneiforme e o símbolo Dingir, a árvore de Huluppu e a "donzela escura", as Lilitus como classe de espíritos.</p>
+        <span class="mod-badge">Mesopotâmia</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#2d2050 0%,#3c3270 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Módulo 03</p>
+        <h3 class="mod-h">Do Judaísmo à Cabala</h3>
+        <p class="mod-p">O percurso de Lilith pelos textos apócrifos, pelo Talmude, pelo Testamento de Salomão e pelo Zohar. Como a figura do demônio foi construída politicamente, e como o feminismo judaico dos anos 1970 ressignificou esses contos.</p>
+        <span class="mod-badge">Judaísmo · Cabala</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#3c3270 0%,#1a1428 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Módulo 04</p>
+        <h3 class="mod-h">Lilith no Neopaganismo e no Imaginário Moderno</h3>
+        <p class="mod-p">Como Lilith chegou à bruxaria contemporânea, o que dizem a astrologia (Lua Negra), o ocultismo moderno e a magia do caos — e a pergunta que fecha o curso: afinal, ela é demônia ou deusa?</p>
+        <span class="mod-badge">Neopaganismo</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- O QUE VOCÊ SAI SABENDO -->
+<section class="pratica">
+  <div class="pratica-topo">
+    <div class="pratica-pill">✦ resultados</div>
+    <h2 class="pratica-titulo">O que você sai sabendo</h2>
+  </div>
+  <div style="padding:0 6vw 60px;">
+  <div class="pratica-grade">
+
+    <div class="pratica-item">
+      <span class="pratica-num">01</span>
+      <h3 class="pratica-item-titulo">Distinguir Lilith <span>da Deusa Ctônica</span></h3>
+      <p class="pratica-item-desc">A maioria das pessoas que trabalha com Lilith a posiciona ao lado de Ereshkigal ou Inanna sem saber que elas pertencem a categorias completamente diferentes. Você vai entender essa diferença com profundidade.</p>
+    </div>
+
+    <div class="pratica-item">
+      <span class="pratica-num">02</span>
+      <h3 class="pratica-item-titulo">Entender <span>a demonização</span> como fenômeno político</h3>
+      <p class="pratica-item-desc">A demonização de Lilith não foi espiritual: foi política. Você vai compreender os mecanismos históricos pelos quais o feminino autônomo foi transformado em ameaça — e por que isso importa para quem trabalha com terapia transpessoal.</p>
+    </div>
+
+    <div class="pratica-item">
+      <span class="pratica-num">03</span>
+      <h3 class="pratica-item-titulo">Ter <span>60+ referências</span> bibliográficas reais</h3>
+      <p class="pratica-item-desc">O e-book inclui 60+ referências acadêmicas de historiadores e arqueólogos. Você sai do curso com um acervo que sustenta pesquisa, conteúdo e prática sem depender de informação sem fonte.</p>
+    </div>
+
+    <div class="pratica-item">
+      <span class="pratica-num">04</span>
+      <h3 class="pratica-item-titulo">Decidir o que Lilith é <span>para você</span> com autonomia</h3>
+      <p class="pratica-item-desc">Deusa ou demônia? Símbolo ou entidade? O curso não decide por você — ele te dá o contexto completo para que essa escolha seja feita com liberdade intelectual e espiritual.</p>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section style="position:relative;overflow:hidden;background:var(--preto);padding:80px 6vw;background-image:url('capa.png');background-size:cover;background-position:center top;">
+  <div style="position:absolute;inset:0;background:rgba(14,8,20,.5);pointer-events:none;z-index:1;"></div>
+  <div style="position:absolute;right:-2vw;top:50%;transform:translateY(-50%);opacity:.07;pointer-events:none;width:55%;max-width:680px;">
+    <svg viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 20 C100 20 40 80 30 180 C20 280 60 380 120 430 C150 455 200 465 200 465 C200 465 250 455 280 430 C340 380 380 280 370 180 C360 80 300 20 200 20Z" stroke="#C0C8D8" stroke-width="1.5" fill="none"/>
+      <ellipse cx="145" cy="185" rx="38" ry="28" stroke="#C0C8D8" stroke-width="1.2" fill="none"/>
+      <ellipse cx="145" cy="185" rx="22" ry="18" stroke="#C0C8D8" stroke-width="1" fill="none"/>
+      <circle cx="145" cy="185" r="8" stroke="#C0C8D8" stroke-width="1.5" fill="none"/>
+      <ellipse cx="255" cy="185" rx="38" ry="28" stroke="#C0C8D8" stroke-width="1.2" fill="none"/>
+      <ellipse cx="255" cy="185" rx="22" ry="18" stroke="#C0C8D8" stroke-width="1" fill="none"/>
+      <circle cx="255" cy="185" r="8" stroke="#C0C8D8" stroke-width="1.5" fill="none"/>
+      <path d="M130 310 C155 330 175 340 200 340 C225 340 245 330 270 310" stroke="#C0C8D8" stroke-width="1.5" fill="none"/>
+      <path d="M140 100 C155 85 175 80 200 80 C225 80 245 85 260 100" stroke="#C0C8D8" stroke-width="1" fill="none"/>
+      <circle cx="200" cy="20" r="6" stroke="#C0C8D8" stroke-width="0.8" fill="none"/>
+    </svg>
+  </div>
+  <div style="position:relative;z-index:2;">
+    <div style="display:flex;justify-content:center;margin-bottom:32px;">
+      <div class="s-pill prata">✦ para quem é</div>
+    </div>
+
+    <!-- frases Menos/Mais — alinhadas à esquerda, max-width desktop -->
+    <div class="pq-frases">
+      <p class="pq-menos" style="color:var(--roxo-claro);">Menos: "Lilith era uma deusa importante que foi apagada pelo patriarcado"</p>
+      <p class="pq-mais">Mais: compreensão rigorosa da origem, transformação e ressignificação de Lilith ao longo de 7.000 anos de história</p>
+      <p class="pq-sub" style="font-size:clamp(1.1rem,1.5vw,1.3rem);">E você escolhendo com conhecimento embasado como trabalhar com essa figura na sua prática.</p>
+    </div>
+
+    <!-- tags — wrap no desktop, coluna no mobile -->
+    <div class="pq-tags-wrap">
+      <div class="pq-tag-item">para praticantes de bruxaria que querem fundamento histórico</div>
+      <div class="pq-tag-item">para pesquisadoras do sagrado feminino</div>
+      <div class="pq-tag-item">para terapeutas transpessoais e estudiosas de mitologia</div>
+      <div class="pq-tag-item">para quem quer parar de reproduzir informação sem fonte</div>
+      <div class="pq-tag-item">para quem cultua Lilith e quer entender o que está cultuando</div>
+      <div class="pq-tag-item">para quem entende que estudar paganismo precisa de rigor</div>
+      <div class="pq-tag-item">para quem está cansada de espiritualidade sensacionalista</div>
+    </div>
+
+    <div style="display:flex;justify-content:center;">
+      <a class="btn btn-grad" style="font-size:.86rem;padding:16px 36px;" href="https://pay.hotmart.com/N105993404V" target="_blank">Garantir Ingresso</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section style="background:var(--bege-claro);padding:60px 6vw;">
+  <div style="display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:48px;">
+    <div style="flex:1;height:1px;background:rgba(43,44,41,.12);"></div>
+    <div class="s-pill roxo">✦ depoimentos</div>
+    <div style="flex:1;height:1px;background:rgba(43,44,41,.12);"></div>
+  </div>
+  <h2 style="font-family:var(--fn-serif);font-style:italic;font-size:2.3rem;color:var(--preto);text-align:center;margin-bottom:48px;font-weight:700;">O que os alunos estão dizendo</h2>
+
+  <div id="dep-scroll">
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Esse curso me fez entender que uma força não precisa ser ancestral para ser legítima. Percebo o quanto ficava querendo encontrar provas para esse discurso por uma falta de confiança no meu próprio trabalho e agora me sinto muito empoderada porque conheço a verdadeira história de Lilith."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#2d2050,#3c3270);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Renata Santos</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Eu faço culto a Lilith há algum tempo. Digo que chamar Lilith de deusa, pra mim, virou comum depois do seu curso — inclusive eu sempre a chamei de demônia até então. Acho maravilhoso cultuar uma divindade que não nasceu deusa, mas conquistou essa coroa."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a1428,#2d2050);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Andrea Ramires</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Curso maravilhoso, estou pasma de tanta informação — que por sinal fez refletir meu culto para as deusas escuras. Extraordinário."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#645090,#2d2050);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Fernanda Simão</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Lilith te incentiva a falar dela infinitas vezes. Meu culto melhorou 100% depois do seu curso. Está muito mais embasado e direcionado, e estamos muito mais próximas."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a1428,#645090);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Andrea Ramires</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Gente, vocês não sabem como é maravilhoso ficar assistindo e reassistindo esse curso. Parece que sempre que assisto de novo percebo um detalhe que não havia percebido antes — principalmente com as polêmicas sobre Lilith."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#3c3270,#2d2050);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Aracne Tarot</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Devorei as mais de três horas em uma tacada só. Sempre gostei dela ser uma demônia, mas como sentia falta de um conteúdo mais histórico — e saí felicíssima de como minha mente se abriu. Como uma mulher latina dentro de um contexto de imigração, minha cabeça fez boom. Obrigada Amanda."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#645090,#1a1428);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Andrea Ramires</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Fui buscar as referências de Madalena como sacerdotisa de Ísis, não encontrei nada e aí a ficha começou a cair. O que fizeram com Lilith é muito parecido — deusas de culturas diferentes unificadas em uma espiritualidade new age sem fontes."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#2d2050,#645090);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Lara Falcão</p></div>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;">
+    <div id="dot-0" style="width:28px;height:6px;border-radius:100px;background:var(--roxo-claro);transition:all .3s;"></div>
+    <div id="dot-1" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-2" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-3" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-4" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-5" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-6" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+  </div>
+</section>
+<script>
+  const ds=document.getElementById('dep-scroll');
+  let isDown=false,startX,scrollLeft;
+  ds.addEventListener('mousedown',e=>{isDown=true;ds.style.cursor='grabbing';startX=e.pageX-ds.offsetLeft;scrollLeft=ds.scrollLeft;});
+  ds.addEventListener('mouseleave',()=>{isDown=false;ds.style.cursor='grab';});
+  ds.addEventListener('mouseup',()=>{isDown=false;ds.style.cursor='grab';});
+  ds.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();ds.scrollLeft=scrollLeft-(e.pageX-ds.offsetLeft-startX)*1.2;});
+  ds.addEventListener('scroll',()=>{
+    const w=ds.scrollWidth-ds.clientWidth;
+    const idx=Math.round((ds.scrollLeft/w)*6);
+    [0,1,2,3,4,5,6].forEach(i=>{const d=document.getElementById('dot-'+i);if(!d)return;d.style.width=i===idx?'28px':'6px';d.style.borderRadius=i===idx?'100px':'50%';d.style.background=i===idx?'var(--roxo-claro)':'rgba(43,44,41,.2)';});
+  });
+</script>
+
+
+<!-- PROVA SOCIAL -->
+<section style="background:linear-gradient(135deg,#2d2050 0%,#1a1428 55%,#3c3270 100%);padding:80px 6vw;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.03;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');pointer-events:none;"></div>
+  <div style="position:relative;z-index:2;">
+    <p style="font-family:var(--fn-heavy);font-weight:900;font-size:clamp(3.5rem,7vw,5.5rem);color:var(--prata);line-height:1;letter-spacing:-.03em;margin-bottom:16px;">1.000+</p>
+    <p style="font-family:var(--fn-heavy);font-weight:400;font-size:1.4rem;color:rgba(192,200,216,.85);margin-bottom:12px;">alunos ao redor do mundo já passaram pela Escola Travessias</p>
+    <p style="font-family:var(--fn-heavy);font-weight:300;font-size:1.1rem;color:rgba(192,200,216,.45);margin-bottom:60px;">Uma comunidade de navegantes que buscam espiritualidade com profundidade, responsabilidade social, autonomia e autenticidade.</p>
+    <div style="display:flex;justify-content:center;gap:60px;flex-wrap:nowrap;">
+      <div>
+        <p style="font-family:var(--fn-heavy);font-weight:900;font-size:3rem;color:var(--prata);line-height:1;margin-bottom:8px;">6</p>
+        <p style="font-family:var(--fn-heavy);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,200,216,.4);">cursos na plataforma</p>
+      </div>
+      <div>
+        <p style="font-family:var(--fn-heavy);font-weight:900;font-size:3rem;color:var(--prata);line-height:1;margin-bottom:8px;">8 anos</p>
+        <p style="font-family:var(--fn-heavy);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,200,216,.4);">de pesquisa e prática</p>
+      </div>
+      <div>
+        <p style="font-family:var(--fn-heavy);font-weight:900;font-size:3rem;color:var(--prata);line-height:1;margin-bottom:8px;">98%</p>
+        <p style="font-family:var(--fn-heavy);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,200,216,.4);">recomendam</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVISOR -->
+<div style="background:var(--bege-claro);padding:0 6vw 48px;"><div style="display:flex;align-items:center;"><div style="flex:1;height:1px;background:rgba(43,44,41,.1);"></div><span style="font-size:1rem;color:var(--roxo-claro);padding:0 20px;opacity:.5;">✦</span><div style="flex:1;height:1px;background:rgba(43,44,41,.1);"></div></div></div>
+
+<!-- CERTIFICADO -->
+<section style="background:var(--bege-claro);padding:80px 12vw;overflow:hidden;">
+  <!-- código de série -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;">
+    <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.2em;color:rgba(43,44,41,.25);text-transform:uppercase;">[ A.T · CERT — 001 ] ———————</p>
+    <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.2em;color:rgba(43,44,41,.25);text-transform:uppercase;">ESCOLA TRAVESSIAS · 2025</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+
+    <!-- TEXTO ESQUERDA -->
+    <div>
+      <h2 style="font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2rem,3.5vw,3rem);color:var(--preto);line-height:1.1;letter-spacing:-.02em;margin-bottom:24px;">
+        Você sai com um <span style="color:var(--roxo-claro);text-decoration:underline;text-underline-offset:6px;">certificado</span> de conclusão
+      </h2>
+      <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--roxo-claro);margin-bottom:16px;">Escola Travessias · Certificação</p>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.95rem;color:rgba(43,44,41,.65);line-height:1.75;">Ao concluir o curso, você recebe um certificado oficial da Escola Travessias — reconhecimento pelo seu aprendizado e dedicação ao longo das 3h20 de conteúdo.</p>
+    </div>
+
+    <!-- MOCK CERTIFICADO -->
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.15);">
+      <img src="certificado.png" alt="Certificado Escola Travessias" style="width:100%;height:auto;display:block;">
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bege-claro);padding:80px 6vw;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:24px;">
+      <div style="flex:1;height:1px;background:rgba(43,44,41,.1);"></div>
+      <div class="s-pill roxo">✦ dúvidas</div>
+      <div style="flex:1;height:1px;background:rgba(43,44,41,.1);"></div>
+    </div>
+    <h2 style="font-family:var(--fn-serif);font-style:italic;font-size:2.3rem;color:var(--preto);text-align:center;margin-bottom:52px;font-weight:700;">Perguntas frequentes</h2>
+    <div class="faq-layout" style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;">
+      <div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>Preciso ter experiência prévia com Lilith ou com paganismo?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">Não. O curso foi pensado tanto para iniciantes quanto para praticantes experientes. O conteúdo parte do zero — da origem das mitologias e das sociedades antigas — e avança até debates contemporâneos dentro da bruxaria neopagã.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>Qual a diferença entre o e-book e a videoaula?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">O e-book de 63 páginas é a versão visual e consultável do conteúdo, com todas as referências bibliográficas, imagens, esquemas e cronologias. As 3h20min de videoaula são o aprofundamento: comentários, conexões, nuances que só emergem na fala. Os dois formatos se complementam e neste curso você recebe os dois.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>O curso toma partido de alguma vertente espiritual?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">Não. O curso apresenta o percurso histórico, arqueológico e psicológico de Lilith sem decretar o que ela é ou deve ser para você. A conclusão — deusa, demônia, símbolo ou entidade — é sua. O objetivo é te dar informação real para que você faça essa escolha com consciência.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>Tem certificado?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">Sim, após a conclusão de todas as aulas você recebe um certificado de participação para baixar em PDF.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>E se eu não gostar do material?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">Você tem 7 dias de garantia incondicional. Se por qualquer razão não for o que esperava, basta solicitar o reembolso integral dentro do prazo — sem perguntas.</div>
+        </div>
+      </div>
+      <!-- CARD WHATSAPP -->
+      <div class="faq-card-contato" style="background:#fff;border:1px solid rgba(43,44,41,.08);border-radius:20px;padding:28px;position:sticky;top:100px;width:240px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box;">
+        <div style="width:44px;height:44px;background:#25D366;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.413A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 01-4.049-1.107l-.29-.173-2.955.838.838-2.955-.174-.29A7.946 7.946 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+        </div>
+        <h3 style="font-family:var(--fn-heavy);font-weight:700;font-size:.95rem;color:var(--preto);line-height:1.3;margin-bottom:8px;">Ainda ficou com alguma dúvida?</h3>
+        <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.78rem;color:rgba(43,44,41,.5);line-height:1.5;margin-bottom:16px;">Se ainda estiver com dúvidas, nossa equipe está à disposição.</p>
+        <a href="https://wa.me/message/EU4VCDBX7WORH1" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--roxo-claro),var(--vinho-claro));color:#fff;font-family:var(--fn-heavy);font-weight:700;font-size:.82rem;letter-spacing:.05em;padding:14px 24px;border-radius:100px;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">✦ Fale conosco</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL / PREÇO -->
+<section style="background:linear-gradient(160deg,#2d2050 0%,#1a1428 55%,#3c3270 100%);padding:80px 6vw;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.03;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');pointer-events:none;"></div>
+  <div style="position:relative;z-index:2;max-width:720px;margin:0 auto;">
+    <h2 style="font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2.5rem,5vw,4.5rem);color:var(--prata);line-height:1;letter-spacing:-.02em;margin-bottom:16px;">Garanta sua vaga</h2>
+    <div style="display:flex;align-items:baseline;justify-content:center;gap:16px;margin-bottom:8px;">
+      <span style="font-family:var(--fn-heavy);font-size:1.1rem;color:rgba(192,200,216,.35);text-decoration:line-through;">R$ 335,00</span>
+      <span style="font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2.5rem,5vw,4rem);color:var(--prata-claro);line-height:1;">R$ 144,00</span>
+    </div>
+    <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.85rem;color:rgba(192,200,216,.45);margin-bottom:40px;">ou 12x de R$ 14,49</p>
+    <!-- TICKET RESUMIDO -->
+    <div style="background:#fff;border-radius:20px;padding:28px 32px;margin-bottom:24px;text-align:left;position:relative;overflow:hidden;max-width:560px;margin-left:auto;margin-right:auto;box-shadow:0 12px 40px rgba(0,0,0,.25);">
+
+      <!-- canto superior direito — estilo ingresso -->
+      <div style="position:absolute;top:0;right:0;background:#1a1428;color:rgba(192,200,216,.7);padding:14px 18px;border-bottom-left-radius:16px;font-family:var(--fn-heavy);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;line-height:1.5;text-align:center;">CURSO<br><span style="font-size:1.1rem;font-weight:900;color:#fff;">✦</span></div>
+
+      <!-- título do curso -->
+      <p style="font-family:var(--fn-heavy);font-weight:900;font-size:1.1rem;color:var(--preto);margin-bottom:4px;padding-right:80px;">LILITH: DEUSA OU DEMÔNIA?</p>
+      <p style="font-family:var(--fn-heavy);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:20px;">ESCOLA TRAVESSIAS · AMANDA AVALON</p>
+
+      <!-- divisor -->
+      <div style="height:1px;background:rgba(43,44,41,.08);margin-bottom:20px;"></div>
+
+      <!-- grid de infos -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+        <div>
+          <p style="font-family:var(--fn-heavy);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:5px;">FORMATO</p>
+          <p style="font-family:var(--fn-heavy);font-weight:700;font-size:.88rem;color:var(--preto);">Aulas Gravadas</p>
+        </div>
+        <div>
+          <p style="font-family:var(--fn-heavy);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:5px;">ACESSO</p>
+          <p style="font-family:var(--fn-heavy);font-weight:700;font-size:.88rem;color:var(--preto);">100% Online</p>
+        </div>
+        <div>
+          <p style="font-family:var(--fn-heavy);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:5px;">DURAÇÃO</p>
+          <p style="font-family:var(--fn-heavy);font-weight:700;font-size:.88rem;color:var(--preto);">3h20min</p>
+        </div>
+      </div>
+    </div>
+    <!-- BOTÃO PRINCIPAL -->
+    <a href="https://pay.hotmart.com/N105993404V" target="_blank" style="display:block;background:linear-gradient(135deg,var(--roxo-claro),var(--vinho-claro));color:#fff;font-family:var(--fn-heavy);font-weight:900;font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 32px;border-radius:100px;text-decoration:none;margin-bottom:16px;transition:opacity .2s;box-shadow:0 8px 30px rgba(90,58,142,.4);max-width:320px;margin-left:auto;margin-right:auto;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">Garantir Ingresso</a>
+    <!-- INCLUSO -->
+    <div style="background:rgba(192,200,216,.07);border:1px solid rgba(192,200,216,.15);border-radius:16px;padding:28px 32px;margin:24px auto;text-align:left;max-width:560px;">
+      <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--roxo-claro);margin-bottom:20px;">O que está incluso</p>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(120,100,180,.15);border:1px solid rgba(120,100,180,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--roxo-claro);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(192,200,216,.9);">Videoaula completa em 4 módulos (3h20min)</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(120,100,180,.15);border:1px solid rgba(120,100,180,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--roxo-claro);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(192,200,216,.9);">E-Book de 63 páginas com embasamento histórico e arqueológico</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(120,100,180,.15);border:1px solid rgba(120,100,180,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--roxo-claro);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(192,200,216,.9);">Acervo bibliográfico com 60+ referências</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(120,100,180,.15);border:1px solid rgba(120,100,180,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--roxo-claro);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(192,200,216,.9);">Cronologia de 7.000 anos de registros sobre Lilith</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(120,100,180,.15);border:1px solid rgba(120,100,180,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--roxo-claro);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(192,200,216,.9);">Acesso imediato a todos os conteúdos</p></div>
+      </div>
+    </div>
+    <a href="https://pay.hotmart.com/N105993404V" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(192,200,216,.2);color:rgba(192,200,216,.6);font-family:var(--fn-heavy);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border-radius:100px;text-decoration:none;margin-bottom:32px;transition:all .2s;" onmouseover="this.style.borderColor='rgba(192,200,216,.4)';this.style.color='rgba(192,200,216,.9)'" onmouseout="this.style.borderColor='rgba(192,200,216,.2)';this.style.color='rgba(192,200,216,.6)'">Garantir Ingresso →</a>
+    <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.82rem;color:rgba(192,200,216,.4);margin-bottom:14px;">Ficou com alguma dúvida? Fale com a gente pelo WhatsApp.</p>
+    <a href="https://wa.me/message/EU4VCDBX7WORH1" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--preto);font-family:var(--fn-heavy);font-weight:700;font-size:.82rem;padding:14px 28px;border-radius:100px;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.413A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 01-4.049-1.107l-.29-.173-2.955.838.838-2.955-.174-.29A7.946 7.946 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+      Falar pelo WhatsApp
+    </a>
+    <p style="font-family:var(--fn-heavy);font-size:.9rem;letter-spacing:.04em;color:var(--prata-escuro);margin-top:28px;line-height:1.5;">✦ ✦ ✦<br>Garantia incondicional de 7 dias.<br>Se não gostar, devolvemos 100% do seu investimento — sem perguntas.<br>✦ ✦ ✦</p>
+  </div>
+</section>
+
+<!-- FACILITADORA -->
+<section style="background:var(--bege-claro);padding:80px 6vw;border-top:1px solid rgba(43,44,41,.06);">
+  <div style="display:flex;justify-content:center;margin-bottom:20px;"><div class="s-pill roxo">✦ facilitadora</div></div>
+  <h2 style="font-family:var(--fn-serif);font-style:italic;font-weight:700;font-size:2.3rem;color:var(--preto);text-align:center;margin-bottom:56px;">Quem sou eu para te guiar?</h2>
+  <div class="fac-grid" style="display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:start;max-width:960px;margin:0 auto;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div class="fac-foto" style="width:280px;height:340px;border-radius:20px;overflow:hidden;position:relative;">
+        <img class="fac-foto-img" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;" src="foto.jpg" alt="Amanda Avalon">
+      </div>
+      <p style="font-family:var(--fn-heavy);font-weight:700;font-size:1.4rem;color:var(--preto);text-align:center;">Amanda Avalon</p>
+      <p style="font-family:var(--fn-heavy);font-size:.65rem;color:rgba(43,44,41,.4);text-align:center;letter-spacing:.05em;">Arquiteta-Urbanista · Pesquisadora · Terapeuta Transpessoal · Taróloga · Professora de Neopaganismo</p>
+    </div>
+    <div>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(43,44,41,.8);line-height:1.8;margin-bottom:16px;">Olá Navegante, me chamo Amanda Avalon. Sou Arquiteta Urbanista especialista em território, permacultura e agrofloresta desde 2016. Também sou pós-graduada em Psicologia e Terapia Integrativa e estou cursando pós-graduação em Mitologia Comparada.</p>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(43,44,41,.8);line-height:1.8;margin-bottom:16px;">Sempre fui movida pela relação ancestral entre o ser humano e o sagrado e por isso pesquiso, estudo e pratico paganismo desde os 7 anos de idade, e desde 2018 produzo conteúdo sobre Corpo-Território e Sagrado nas redes sociais.</p>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(43,44,41,.8);line-height:1.8;margin-bottom:16px;">Atuo como Terapeuta Transpessoal, Taróloga, Professora de Neopaganismo e como Comunicadora.</p>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(43,44,41,.8);line-height:1.8;">Meu trabalho reúne espiritualidade, saúde integrativa e consciência sistêmica, com o propósito de apoiar na instrução e no cuidado de pessoas que buscam construir mais sentido para as suas vidas. O meu objetivo é traduzir conhecimentos ocultos de forma séria e acessível, sem cair na armadilha da apropriação cultural, com o intuito de mostrar como o autodesenvolvimento através da espiritualidade pode impulsionar a vida comum, integrando cotidiano e subjetividade para resgatar autonomia, autenticidade e algum equilíbrio nesse mundo em colapso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO FINAL -->
+<section style="background:var(--preto);padding:100px 6vw;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(100,80,160,.45) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;top:28px;left:0;right:0;overflow:hidden;white-space:nowrap;opacity:.07;">
+    <span style="font-family:var(--fn-heavy);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--prata);animation:marquee 18s linear infinite;display:inline-block;">✦ LILITH: DEUSA OU DEMÔNIA? &nbsp;&nbsp;&nbsp; ✦ ESCOLA TRAVESSIAS &nbsp;&nbsp;&nbsp; ✦ AMANDA AVALON &nbsp;&nbsp;&nbsp; ✦ LILITH: DEUSA OU DEMÔNIA? &nbsp;&nbsp;&nbsp; ✦ ESCOLA TRAVESSIAS &nbsp;&nbsp;&nbsp; ✦ AMANDA AVALON &nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <div style="position:absolute;bottom:28px;left:0;right:0;overflow:hidden;white-space:nowrap;opacity:.07;">
+    <span style="font-family:var(--fn-heavy);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--prata);animation:marquee 22s linear infinite reverse;display:inline-block;">✦ MITOLOGIA COMPARADA &nbsp;&nbsp;&nbsp; ✦ SAGRADO FEMININO &nbsp;&nbsp;&nbsp; ✦ NEOPAGANISMO &nbsp;&nbsp;&nbsp; ✦ MITOLOGIA COMPARADA &nbsp;&nbsp;&nbsp; ✦ SAGRADO FEMININO &nbsp;&nbsp;&nbsp; ✦ NEOPAGANISMO &nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <div style="position:relative;z-index:2;">
+    <p style="font-family:var(--fn-heavy);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(192,200,216,.25);margin-bottom:24px;">Escola Travessias · Amanda Avalon</p>
+    <h2 style="font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2.8rem,6vw,5.5rem);color:var(--prata);line-height:1;letter-spacing:-.02em;margin-bottom:48px;">Quer conhecer a<br>verdadeira Lilith?</h2>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="https://pay.hotmart.com/N105993404V" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--roxo-claro),var(--vinho-claro));color:#fff;font-family:var(--fn-heavy);font-weight:900;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;padding:18px 40px;border-radius:100px;text-decoration:none;box-shadow:0 8px 30px rgba(90,58,142,.4);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Garantir meu ingresso</a>
+      <a href="https://wa.me/message/EU4VCDBX7WORH1" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:rgba(192,200,216,.08);border:1px solid rgba(192,200,216,.12);color:rgba(192,200,216,.7);font-family:var(--fn-heavy);font-weight:500;font-size:.88rem;padding:18px 36px;border-radius:100px;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(192,200,216,.12)'" onmouseout="this.style.background='rgba(192,200,216,.08)'">Falar com o time</a>
+    </div>
+    <p style="font-family:var(--fn-heavy);font-size:.65rem;letter-spacing:.1em;color:rgba(192,200,216,.18);text-transform:uppercase;margin-top:48px;">© 2025 Escola Travessias · Amanda Avalon · Todos os direitos reservados</p>
+  </div>
+</section>
+
+<script>function toggleFaq2(btn){btn.classList.toggle('open');}</script>
+</body>
+</html>
